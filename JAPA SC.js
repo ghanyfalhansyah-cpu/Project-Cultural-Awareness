@@ -32,7 +32,7 @@ const H=[
 const P=[
 {photo:"Bung_Tomo.jpg",key:["Founded the people’s uprising group BPRI","Rallied Surabaya through radio broadcasts","Became the voice of the 10 November battle"],legacy:"The fiery voice of Heroes’ Day."},
 {photo:"Tumenggung ario suryo.png",key:["Served as the first Governor of East Java","Rejected the British ultimatum before the battle","Gave political backing to the resistance"],legacy:"Governor Suryo, a steadfast civilian leader."},
-{photo:"Hasyim_Asy'aru.jpg",key:["Founded Tebuireng pesantren in 1899","Co-founded Nahdlatul Ulama in 1926","Issued the Resolution of Jihad in 1945"],legacy:"A scholar who united faith and nationhood."},
+{photo:"Hasyim_Asy'ari.jpg",key:["Founded Tebuireng pesantren in 1899","Co-founded Nahdlatul Ulama in 1926","Issued the Resolution of Jihad in 1945"],legacy:"A scholar who united faith and nationhood."},
 {photo:"mayjen sungkono.jpg",key:["Commanded the BKR forces in Surabaya","Coordinated the city’s defense","Stayed calm at headquarters to the end"],legacy:"A disciplined and steady commander."},
 {photo:"Laksamana_Muda_Moestopo.jpg",key:["Confronted British forces in Surabaya","Served as a PETA-trained officer and dentist","Founded a university in Jakarta"],legacy:"Both a soldier and an educator."},
 {photo:"hr_muhammad.jpg",key:["Took part in talks with British forces","Was held hostage in the Mallaby incident, per accounts","Survived the revolution"],legacy:"A resistance leader in Surabaya."},
