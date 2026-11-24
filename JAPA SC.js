@@ -28,11 +28,11 @@ const H=[
 /* ===================================================
    PART 2: PHOTOS AND HIGHLIGHTS
    =================================================== */
-/* PHOTOS: put image files in the same folder as this page and write each file name below, e.g. photo:"bungtomo.jpg". You can also use the Add photo button on each hero page. */
+/* PHOTOS: put image files in the same folder as this page and write each file name below, e.g. photo:"bungtomo.jpg". */
 const P=[
 {photo:"Bung_Tomo.jpg",key:["Founded the people’s uprising group BPRI","Rallied Surabaya through radio broadcasts","Became the voice of the 10 November battle"],legacy:"The fiery voice of Heroes’ Day."},
 {photo:"Tumenggung ario suryo.png",key:["Served as the first Governor of East Java","Rejected the British ultimatum before the battle","Gave political backing to the resistance"],legacy:"Governor Suryo, a steadfast civilian leader."},
-{photo:"Hasyim_Asy'ari.jpg",key:["Founded Tebuireng pesantren in 1899","Co-founded Nahdlatul Ulama in 1926","Issued the Resolution of Jihad in 1945"],legacy:"A scholar who united faith and nationhood."},
+{photo:"Hasyim_asy'ari.jpg",key:["Founded Tebuireng pesantren in 1899","Co-founded Nahdlatul Ulama in 1926","Issued the Resolution of Jihad in 1945"],legacy:"A scholar who united faith and nationhood."},
 {photo:"mayjen sungkono.jpg",key:["Commanded the BKR forces in Surabaya","Coordinated the city’s defense","Stayed calm at headquarters to the end"],legacy:"A disciplined and steady commander."},
 {photo:"Laksamana_Muda_Moestopo.jpg",key:["Confronted British forces in Surabaya","Served as a PETA-trained officer and dentist","Founded a university in Jakarta"],legacy:"Both a soldier and an educator."},
 {photo:"hr_muhammad.jpg",key:["Took part in talks with British forces","Was held hostage in the Mallaby incident, per accounts","Survived the revolution"],legacy:"A resistance leader in Surabaya."},
@@ -69,7 +69,7 @@ const mem={};for(let i=0;i<7;i++){try{const u=localStorage.getItem("ph"+i);if(u)
    PART 5: PAGES
    Each function below builds one page: home, heroes, battle, detail, sources.
    =================================================== */
-function media(i){const s=mem[i]||P[i].photo;if(s)return `<img class="m" src="${s}" alt="${H[i].n}">`;
+function media(i){const s=P[i].photo;if(s)return `<img class="m" src="${s}" alt="${H[i].n}">`;
 const hu=i*47+5;return `<svg class="m" viewBox="0 0 100 125" preserveAspectRatio="xMidYMid slice" role="img" aria-label="${H[i].n}, photo not added yet"><rect width="100" height="125" fill="hsl(${hu} 40% 84%)"/><circle cx="50" cy="48" r="19" fill="hsl(${hu} 30% 64%)"/><path d="M8 125c0-34 19-50 42-50s42 16 42 50z" fill="hsl(${hu} 30% 64%)"/></svg>`}
 const areas=["a","b","c","d","e","f","g"];
 function home(){return `<section class="hero"><p>Surabaya, 10 November 1945</p><h1 class="disp">Seven voices of the battle</h1><p class="s">A leader, a cleric, commanders, an orator and a photographer. Together, they carried a city through its hardest days.</p><button class="cta" data-go="heroes">Meet the heroes</button></section>
@@ -77,14 +77,14 @@ function home(){return `<section class="hero"><p>Surabaya, 10 November 1945</p><
 <div class="wrap"><h2 class="disp">Why Heroes’ Day</h2><p class="lead">Every 10 November, Indonesia remembers the Battle of Surabaya. The seven people here came from very different walks of life, yet each added something the city needed: leadership, faith, command, a voice, or a witness.</p><button class="up" data-go="battle">See how the battle unfolded</button></div>`}
 function heroes(){return `<div class="wrap"><h2 class="disp">The heroes</h2><div class="gr">${H.map((h,i)=>`<button class="c" data-go="h${i+1}"><div class="ph">${media(i)}</div><h3>${h.n}</h3><p>${h.role}</p></button>`).join("")}</div></div>`}
 function battle(){return `<div class="wrap"><h2 class="disp">The battle</h2><p class="lead">Five moments that led to 10 November 1945.</p><ol class="tl">${TL.map(t=>`<li><b>${t[0]}</b><strong>${t[1]}</strong><br>${t[2]}</li>`).join("")}</ol></div>`}
-function detail(i){const h=H[i],p=P[i];return `<div class="wrap"><div class="d"><div><div class="ph">${media(i)}</div>${P[i].photo&&PC[i]?`<p class="cap">Photo: <a href="${PC[i][1]}" target="_blank" rel="noopener noreferrer">${PC[i][0]}</a></p>`:""}<button class="up" data-up="${i}">${mem[i]?"Change photo":"Add photo"}</button>${mem[i]?` <button class="up" data-rm="${i}">Remove</button>`:""}</div>
+function detail(i){const h=H[i],p=P[i];return `<div class="wrap"><div class="d"><div><div class="ph">${media(i)}</div>${P[i].photo&&PC[i]?`<p class="cap">Photo: <a href="${PC[i][1]}" target="_blank" rel="noopener noreferrer">${PC[i][0]}</a></p>`:""}</div>
 <div><h2 class="disp">${h.n}</h2><p class="full">${h.full}</p><span class="role">${h.role}</span>
 <div class="vit"><div><span>Born</span>${h.born}</div><div><span>Died</span>${h.died}</div></div>
 <h4>What defined them</h4><ul class="kp">${p.key.map(k=>`<li>${k}</li>`).join("")}</ul>
 <h4>Background</h4><div class="bio">${h.bio.map(t=>`<p>${t}</p>`).join("")}</div><div class="leg">${p.legacy}</div>
 <h4>Sources</h4><div class="srcs">${HS[i].map(k=>`<a href="${SRC[k][1]}" target="_blank" rel="noopener noreferrer">${SRC[k][0].split(":")[0]}</a>`).join("")}</div>
 <div class="quiz" id="qz"></div><div class="pn"><button data-go="h${(i+6)%7+1}">Previous</button><button data-go="h${(i+1)%7+1}">Next</button></div></div></div></div>`}
-function sources(){return `<div class="wrap"><h2 class="disp">Sources</h2><p class="lead">Profiles and the timeline draw on these Indonesian press reports and references.</p><ul class="sl">${SRC.map(x=>`<li>${x[0].split(": ")[1]||x[0]}<small>${x[0].split(": ")[0]}</small><a href="${x[1]}" target="_blank" rel="noopener noreferrer">${x[1]}</a></li>`).join("")}</ul><h4>Photo credits</h4><ul class="sl">${PC.map((c,i)=>c?`<li>${H[i].n}<small>${c[0]}</small><a href="${c[1]}" target="_blank" rel="noopener noreferrer">${c[1]}</a></li>`:"").join("")}</ul><p class="lead">Some dates, such as those for K.H. Hasyim Asy’ari, and some background details come from general historical references rather than the pages above. Please check official biographies before using them for schoolwork or publication.</p></div>`}
+function sources(){return `<div class="wrap"><h2 class="disp">Sources</h2><p class="lead">Profiles and the timeline draw on these Indonesian press reports and references.</p><ul class="sl">${SRC.map(x=>`<li>${x[0].split(": ")[1]||x[0]}<small>${x[0].split(": ")[0]}</small><a href="${x[1]}" target="_blank" rel="noopener noreferrer">${x[1]}</a></li>`).join("")}</ul><h4>Photo credits</h4><ul class="sl">${PC.map((c,i)=>c?`<li>${H[i].n}<small>${c[0]}</small><a href="${c[1]}" target="_blank" rel="noopener noreferrer">${c[1]}</a></li>`:"").join("")}</ul><p class="lead">Some dates, such as those for K.H. Hasyim Asy’ari, and some background details come from general historical references rather than the pages above. Please check official biographies before using them for schoolwork or publication. For photos, Wikimedia Commons is a good source of freely licensed portraits; credit the photographer.</p></div>`}
 
 /* ===================================================
    PART 8: QUIZ + CONFETTI
